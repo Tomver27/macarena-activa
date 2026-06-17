@@ -6,7 +6,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ---
 
-# Contexto del proyecto: Macarena Activa
+# Contexto del proyecto: Macarena En Movimiento
 
 ## Qué es
 Landing page del Centro Cultural Comunitario (CDC) "Macarena en Movimiento", desarrollada por el Grupo Orizzonti (Universidad Piloto de Colombia, Taller Internacional Italia 2026). El proyecto real es un CDC en el barrio La Macarena, Bogotá (Calle 26 Bis #4-88).

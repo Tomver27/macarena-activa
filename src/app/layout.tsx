@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Macarena Activa — Centro Cultural Comunitario",
+  title: "Macarena En Movimiento — Centro Cultural Comunitario",
   description:
     "Centro de Desarrollo Comunitario en el barrio La Macarena, Bogotá. Arte, cultura y encuentro para la comunidad.",
 };

@@ -22,9 +22,22 @@ const contexto = [
 
 export default function LoteSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const h2Ref = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.from(h2Ref.current, {
+        y: 60,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+
       gsap.from(".lote-dato", {
         y: 30,
         opacity: 0,
@@ -76,6 +89,7 @@ export default function LoteSection() {
           Localización
         </p>
         <h2
+          ref={h2Ref}
           style={{
             fontFamily: "var(--font-playfair), serif",
             fontSize: "var(--text-lg)",

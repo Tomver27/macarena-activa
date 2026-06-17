@@ -13,6 +13,8 @@ const links = [
 
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null);
+  const fullRef = useRef<HTMLSpanElement>(null);
+  const memCharsRef = useRef<(HTMLSpanElement | null)[]>([null, null, null]);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,6 +30,47 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const full = fullRef.current;
+    const chars = memCharsRef.current.filter((c): c is HTMLSpanElement => c !== null);
+    if (!full || chars.length < 3) return;
+
+    if (scrolled) {
+      gsap.to(full, { opacity: 0, y: -12, duration: 0.3, ease: "power2.in" });
+      gsap.fromTo(
+        chars,
+        { opacity: 0, y: 22, scale: 0.3, letterSpacing: "0em" },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          letterSpacing: "0.32em",
+          duration: 0.65,
+          stagger: 0.13,
+          ease: "back.out(2.5)",
+          delay: 0.28,
+        }
+      );
+    } else {
+      gsap.to(chars, {
+        opacity: 0,
+        y: -12,
+        scale: 0.3,
+        letterSpacing: "0em",
+        duration: 0.22,
+        stagger: 0.05,
+        ease: "power2.in",
+      });
+      gsap.to(full, {
+        opacity: 1,
+        y: 0,
+        duration: 0.45,
+        ease: "power2.out",
+        delay: 0.22,
+      });
+    }
+  }, [scrolled]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -54,16 +97,66 @@ export default function Navbar() {
         borderBottom: scrolled ? "1px solid rgba(186,90,90,0.15)" : "none",
       }}
     >
-      <span
-        style={{
-          fontFamily: "var(--font-playfair), serif",
-          fontSize: "1.1rem",
-          color: "var(--crema)",
-          letterSpacing: "0.05em",
-        }}
-      >
-        Macarena Activa
-      </span>
+      {/* Logo — sizer invisible mantiene el ancho del texto largo */}
+      <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
+        <span
+          style={{
+            visibility: "hidden",
+            pointerEvents: "none",
+            fontFamily: "var(--font-playfair), serif",
+            fontSize: "1.1rem",
+            letterSpacing: "0.05em",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Macarena En Movimiento
+        </span>
+
+        {/* Texto completo */}
+        <span
+          ref={fullRef}
+          style={{
+            position: "absolute",
+            left: 0,
+            fontFamily: "var(--font-playfair), serif",
+            fontSize: "1.1rem",
+            color: "var(--crema)",
+            letterSpacing: "0.05em",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Macarena En Movimiento
+        </span>
+
+        {/* MEM — stagger bounce al hacer scroll */}
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          {["M", "E", "M"].map((char, i) => (
+            <span
+              key={i}
+              ref={(el) => {
+                memCharsRef.current[i] = el;
+              }}
+              style={{
+                display: "inline-block",
+                fontFamily: "var(--font-playfair), serif",
+                fontSize: "1.5rem",
+                color: "var(--coral)",
+                opacity: 0,
+              }}
+            >
+              {char}
+            </span>
+          ))}
+        </div>
+      </div>
+
       <ul
         style={{
           display: "flex",

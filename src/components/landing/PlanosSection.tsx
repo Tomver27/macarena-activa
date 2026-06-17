@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,7 +19,7 @@ export default function PlanosSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".plano-text > *", {
+      gsap.from(".plano-anim", {
         x: -40,
         opacity: 0,
         stagger: 0.12,
@@ -68,6 +69,7 @@ export default function PlanosSection() {
         {/* Text */}
         <div className="plano-text" style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           <p
+            className="plano-anim"
             style={{
               fontSize: "0.8rem",
               letterSpacing: "0.25em",
@@ -77,7 +79,7 @@ export default function PlanosSection() {
           >
             Arquitectura
           </p>
-          <h2
+          <AnimatedTitle
             style={{
               fontFamily: "var(--font-playfair), serif",
               fontSize: "var(--text-lg)",
@@ -86,14 +88,14 @@ export default function PlanosSection() {
             }}
           >
             El espacio que estamos construyendo
-          </h2>
-          <p style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "rgba(17,17,17,0.65)", maxWidth: "420px" }}>
+          </AnimatedTitle>
+          <p className="plano-anim" style={{ fontSize: "0.95rem", lineHeight: 1.7, color: "rgba(17,17,17,0.65)", maxWidth: "420px" }}>
             Volumen en L como elemento jerárquico. Patio central como núcleo organizador.
             Cubiertas planas utilizables, ventilación cruzada y luz natural para reducir
             la dependencia de sistemas artificiales.
           </p>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "0.5rem" }}>
+          <div className="plano-anim" style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "0.5rem" }}>
             {estrategias.map((e) => (
               <span
                 key={e.label}

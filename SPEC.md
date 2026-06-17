@@ -1,4 +1,4 @@
-# SPEC — Macarena Activa
+# SPEC — Macarena En Movimiento
 
 ## Objetivo y audiencia
 Landing page del CDC "Macarena en Movimiento", barrio La Macarena, Bogotá.

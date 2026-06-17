@@ -17,9 +17,22 @@ const stats = [
 
 export default function StatsSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      gsap.from(headingRef.current, {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+
       const items = sectionRef.current?.querySelectorAll(".stat-item");
       items?.forEach((item) => {
         const numEl = item.querySelector(".stat-num") as HTMLElement;
@@ -69,6 +82,7 @@ export default function StatsSection() {
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <p
+          ref={headingRef}
           style={{
             fontSize: "0.8rem",
             letterSpacing: "0.25em",

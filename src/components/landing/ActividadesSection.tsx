@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -118,7 +119,7 @@ export default function ActividadesSection() {
         >
           Programación
         </p>
-        <h2
+        <AnimatedTitle
           style={{
             fontFamily: "var(--font-playfair), serif",
             fontSize: "var(--text-lg)",
@@ -129,7 +130,7 @@ export default function ActividadesSection() {
           }}
         >
           Actividades del CDC
-        </h2>
+        </AnimatedTitle>
 
         <div
           style={{

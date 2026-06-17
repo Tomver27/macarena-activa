@@ -19,7 +19,7 @@ export default function Footer() {
           color: "var(--crema)",
         }}
       >
-        Macarena Activa
+        Macarena En Movimiento
       </span>
       <p style={{ color: "var(--azul)", fontSize: "0.9rem", letterSpacing: "0.1em" }}>
         Barrio La Macarena · Bogotá, Colombia

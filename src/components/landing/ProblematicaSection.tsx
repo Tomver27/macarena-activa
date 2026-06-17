@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -94,8 +95,7 @@ export default function ProblematicaSection() {
         >
           Problemática
         </p>
-        <h2
-          className="prob-heading"
+        <AnimatedTitle
           style={{
             fontFamily: "var(--font-playfair), serif",
             fontSize: "var(--text-lg)",
@@ -106,7 +106,7 @@ export default function ProblematicaSection() {
           }}
         >
           ¿Por qué La Macarena necesita este espacio?
-        </h2>
+        </AnimatedTitle>
         <p
           className="prob-heading"
           style={{

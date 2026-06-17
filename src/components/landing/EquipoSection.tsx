@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,7 +90,7 @@ export default function EquipoSection() {
         >
           Grupo Orizzonti
         </p>
-        <h2
+        <AnimatedTitle
           style={{
             fontFamily: "var(--font-playfair), serif",
             fontSize: "var(--text-lg)",
@@ -99,7 +100,7 @@ export default function EquipoSection() {
           }}
         >
           El equipo
-        </h2>
+        </AnimatedTitle>
         <p
           style={{
             fontSize: "0.95rem",

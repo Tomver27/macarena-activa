@@ -8,9 +8,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const BASE_STREAMS = [
-  { url: "https://www.youtube.com/embed/live_stream?channel=UCxxxxxx1&autoplay=1", label: "Canal A" },
-  { url: "https://www.youtube.com/embed/live_stream?channel=UCxxxxxx2&autoplay=1", label: "Canal B" },
-  { url: "https://www.youtube.com/embed/live_stream?channel=UCxxxxxx3&autoplay=1", label: "Canal C" },
+  { url: "https://www.youtube.com/embed/live_stream?channel=Im5WP_oST40&autoplay=1", label: "Canal A" },
+  { url: "https://www.youtube.com/embed/live_stream?channel=kn2B2S3VFrI&autoplay=1", label: "Canal B" },
+  { url: "https://www.youtube.com/embed/AMRtN98PyUY&autoplay=1", label: "Canal C" },
 ];
 
 function StreamCarousel() {
@@ -21,12 +21,7 @@ function StreamCarousel() {
     ? [{ url: streamDomain, label: "Stream en vivo" }, ...BASE_STREAMS]
     : BASE_STREAMS;
 
-  // Stable random initial index — computed once at first render
-  const randomIndexRef = useRef(-1);
-  if (randomIndexRef.current === -1) {
-    randomIndexRef.current = Math.floor(Math.random() * streams.length);
-  }
-  const [activeIndex, setActiveIndex] = useState(randomIndexRef.current);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const rootRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
@@ -213,6 +208,7 @@ export default function HeroSection() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const streamRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLButtonElement>(null);
+  const bajaRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -248,6 +244,18 @@ export default function HeroSection() {
           start: "top top",
           end: "bottom top",
           scrub: true,
+        },
+      });
+
+      // "Baja" indicator: desliza a la derecha y desaparece al hacer scroll
+      gsap.to(bajaRef.current, {
+        x: 90,
+        opacity: 0,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "50% top",
+          end: "80% top",
+          scrub: 0.6,
         },
       });
     }, sectionRef);
@@ -427,9 +435,10 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Scroll indicator */}
-      <div
-        aria-hidden="true"
+      {/* Scroll indicator — botón funcional */}
+      <button
+        ref={bajaRef}
+        onClick={scrollToNext}
         style={{
           position: "absolute",
           bottom: "2.5rem",
@@ -440,10 +449,18 @@ export default function HeroSection() {
           alignItems: "center",
           gap: "0.5rem",
           opacity: 0.4,
+          background: "none",
+          border: "none",
+          cursor: "none",
+          padding: 0,
+          transition: "opacity 0.25s",
         }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.85"; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.4"; }}
+        aria-label="Ir a la siguiente sección"
       >
-        <span style={{ fontSize: "0.7rem", letterSpacing: "0.2em", textTransform: "uppercase" }}>
-          Scroll
+        <span style={{ fontSize: "0.7rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--crema)" }}>
+          Baja
         </span>
         <div
           style={{
@@ -452,7 +469,7 @@ export default function HeroSection() {
             background: "linear-gradient(to bottom, var(--crema), transparent)",
           }}
         />
-      </div>
+      </button>
 
       {/* Responsive styles */}
       <style>{`

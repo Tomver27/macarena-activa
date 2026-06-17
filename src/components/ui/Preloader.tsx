@@ -54,7 +54,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
 
   return (
     <div ref={rootRef} className="preloader">
-      <h1 className="preloader__title">Macarena Activa</h1>
+      <h1 className="preloader__title">Macarena En Movimiento</h1>
       <div className="preloader__bar">
         <div ref={fillRef} className="preloader__fill" />
       </div>

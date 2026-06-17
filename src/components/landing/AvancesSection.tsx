@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -97,7 +98,7 @@ export default function AvancesSection() {
         >
           Progreso
         </p>
-        <h2
+        <AnimatedTitle
           style={{
             fontFamily: "var(--font-playfair), serif",
             fontSize: "var(--text-lg)",
@@ -107,7 +108,7 @@ export default function AvancesSection() {
           }}
         >
           Nuestro progreso
-        </h2>
+        </AnimatedTitle>
 
         {/* Timeline */}
         <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "0" }}>
