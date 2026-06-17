@@ -8,9 +8,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const BASE_STREAMS = [
-  { url: "https://www.youtube.com/embed/live_stream?channel=Im5WP_oST40&autoplay=1", label: "Canal A" },
-  { url: "https://www.youtube.com/embed/live_stream?channel=kn2B2S3VFrI&autoplay=1", label: "Canal B" },
-  { url: "https://www.youtube.com/embed/AMRtN98PyUY&autoplay=1", label: "Canal C" },
+  { url: "https://www.youtube.com/embed/AMRtN98PyUY?list=RDAMRtN98PyUY&autoplay=1&mute=1", label: "LIVING | Hesse Kassel" },
+  { url: "https://www.youtube.com/embed/AKcmOnFu1SQ?list=RDAKcmOnFu1SQ&autoplay=1&mute=1", label: "Candelabro — Lollapalooza 2026" },
+  { url: "https://www.youtube.com/embed/Fo89b8zAIE4?list=RDFo89b8zAIE4&autoplay=1&mute=1", label: "Rusowsky: Tiny Desk" },
 ];
 
 function StreamCarousel() {
@@ -160,7 +160,7 @@ function StreamCarousel() {
             src={streams[activeIndex].url}
             style={{ width: "100%", height: "100%", border: "none", display: "block", pointerEvents: "none" }}
             allowFullScreen
-            allow="autoplay"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             title={`Programación visual en vivo — ${streams[activeIndex].label}`}
           />
         </div>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Macarena en Movimiento</string>
+    <string name="title_activity_main">Macarena en Movimiento</string>
+    <string name="package_name">co.edu.piloto.macarena</string>
+    <string name="custom_url_scheme">co.edu.piloto.macarena</string>
+</resources>
